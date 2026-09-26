@@ -7,34 +7,47 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header>
-        <button>Toggle theme</button>
-        <img alt="Benjamin Stone portrait">
-        <h1>Benjamin Stone</h1>
-        <h2>Software Engineer</h2>
-        <a href="https://linkedin.com/in/bstone100" target="_blank">LinkedIn</a>
-        <a href="https://github.com/bstone100" target="_blank">GitHub</a>
-    </header>
-    <main>
-        <h3>About me</h3>
-        <p>My name is Benjamin Stone. I'm a Software Engineer based in the San Francisco Bay Area. I've worked for two years at a Silicon Valley start-up, building awesome software with awesome people.</p>
-        <div>
-            <button>Left</button>
-            <div>
-                <img alt="Benjamin doing something cool">
-                <img alt="Benjamin looking attractive">
-                <img alt="Benjamin hard at work">
-                <img alt="Benjamin with other people">
+    <div class="container page">
+        <header>
+            <div class="top-row">
+                <button>Toggle theme</button>
             </div>
-            <button>Right</button>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2026 Benjamin Stone. All Rights Reserved.</p>
-        <a href="https://linkedin.com/in/bstone100" target="_blank">LinkedIn</a>
-        <a href="https://github.com/bstone100" target="_blank">GitHub</a>
-    </footer>
 
+            <div class="header">
+                <img alt="Benjamin Stone portrait">
+                <div>
+                    <h1>Benjamin Stone</h1>
+                    <h2>Software Engineer</h2>
+                    <a href="https://linkedin.com/in/bstone100" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/bstone100" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+        </header>
+        <main>
+            <h3>About me</h3>
+            <p>My name is Benjamin Stone. I'm a Software Engineer based in the San Francisco Bay Area. I've worked for two years at a Silicon Valley start-up, building awesome software with awesome people.</p>
+            <div class="image-slider">
+                <button class="btn btn--icon">Left</button>
+                <div class="images">
+                    <img alt="Benjamin doing something cool">
+                    <img alt="Benjamin looking attractive">
+                    <img alt="Benjamin hard at work">
+                    <img alt="Benjamin with other people">
+                </div>
+                <button class="btn btn--icon">Right</button>
+            </div>
+        </main>
+        <footer>
+            <div class="footer">
+                <p><small>&copy; 2026 Benjamin Stone. All Rights Reserved.</small></p>
+                <div>
+                    <a href="https://linkedin.com/in/bstone100" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/bstone100" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </footer>
+    </div>
     <script type="module" src="main.js"></script>
   </body>
 </html>
