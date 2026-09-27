@@ -1,0 +1,39 @@
+:root {
+    font-family: "Wotfard", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    all: unset;
+    box-sizing: border-box;
+    display: block;
+}
+
+.title-large {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.title-medium {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.title-small {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.text-large {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.text-medium {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.text-small {
+    font-size: 0.875rem;
+    font-weight: 300;
+}
