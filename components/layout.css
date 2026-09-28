@@ -71,6 +71,7 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap: var(--layout-gap-medium);
+    padding-block: 12px;
 }
 
 .button-group {
