@@ -1,0 +1,14 @@
+.photo-dialog {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+.photo-dialog::backdrop {
+    background-color: rgba(255 255 255 / 10%);
+    backdrop-filter: blur(5px);
+}
+
+.photo-dialog .photo {
+    width: 80vw;
+}

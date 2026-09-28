@@ -91,9 +91,11 @@
     background-color: var(--primary-medium-color);
 }
 
-body {
+body, dialog {
     color: var(--primary-text-color);
-    transition: color var(--gradient-duration) var(--gradient-easing);
+    border-color: var(--primary-text-color);
+    transition: color var(--gradient-duration) var(--gradient-easing),
+                border-color var(--gradient-duration) var(--gradient-easing);
 }
 
 

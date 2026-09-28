@@ -42,7 +42,15 @@
     display: block;
 }
 
+.btn--photo {
+    transition: scale var(--click-duration) var(--click-easing);
+    cursor: pointer;
+}
 
+.btn--photo:hover,
+.btn--photo:active {
+    scale: 0.9;
+}
 
 
 
