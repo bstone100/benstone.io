@@ -10,5 +10,9 @@
 }
 
 .photo-dialog .photo {
-    width: 80vw;
+    /* allow the image to try to take its natural size but constrain it */
+    max-width: 80vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
 }
