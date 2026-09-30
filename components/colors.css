@@ -1,102 +1,44 @@
 :root {
     /* color palette*/
+    --light: #edf0f3;
+    --dark: #303135;
 
-    /* dark colors */
-    --indigo: rgb(60 43 88);
-    --purple: rgb(100 73 120);
-    --pink: rgb(159 94 124);
+    --text-color: var(--dark);
+    --background-color: var(--light);
 
-    /* light colors */
-    --red: rgb(184 78 80);
-    --orange: rgb(235, 145, 87);
-    --yellow: rgb(244 207 98);
-
-    --primary-dark-color: var(--red);
-    --primary-medium-color: var(--orange);
-    --primary-light-color: var(--yellow);
-
-    --secondary-dark-color: var(--indigo);
-    --secondary-medium-color: var(--purple);
-    --secondary-light-color: var(--pink);
-
-    --primary-text-color: var(--indigo);
-
-    /* gradients */
-    --gradient: linear-gradient(0deg, var(--primary-dark-color), var(--primary-medium-color), var(--primary-light-color));
-
-    /* animation */
-    --gradient-duration: 300ms;
-    --gradient-easing: ease;
-    transition: --primary-dark-color var(--gradient-duration) var(--gradient-easing),
-                --primary-medium-color var(--gradient-duration) var(--gradient-easing),
-                --primary-light-color var(--gradient-duration) var(--gradient-easing),
-                --secondary-dark-color var(--gradient-duration) var(--gradient-easing),
-                --secondary-medium-color var(--gradient-duration) var(--gradient-easing),
-                --secondary-light-color var(--gradient-duration) var(--gradient-easing);
-
-    background-image: var(--gradient);
+    /* animation: transition the color properties themselves */
+    --color-duration: 300ms;
+    --color-easing: ease;
+    transition: --text-color var(--color-duration) var(--color-easing),
+                --background-color var(--color-duration) var(--color-easing);
 }
 
 /* @property makes these custom properties interpolatable */
 /* you can't use var() for initial-value, so we set it to any value here and then in :root we set the actual initial values */
 
-@property --primary-dark-color {
+@property --text-color {
     syntax: "<color>";
     inherits: true;
     initial-value: white;
 }
 
-@property --primary-medium-color {
+@property --background-color {
     syntax: "<color>";
     inherits: true;
     initial-value: white;
 }
 
-@property --primary-light-color {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: white;
+html.dark-theme {
+    --text-color: var(--light);
+    --background-color: var(--dark);
 }
 
-@property --secondary-dark-color {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: white;
+html, dialog {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
 }
 
-@property --secondary-medium-color {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: white;
-}
-
-@property --secondary-light-color {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: white;
-}
-
-.dark-theme {
-    --primary-dark-color: var(--indigo);
-    --primary-medium-color: var(--purple);
-    --primary-light-color: var(--pink);
-    --secondary-dark-color: var(--red);
-    --secondary-medium-color: var(--orange);
-    --secondary-light-color: var(--yellow);
-
-    --primary-text-color: var(--yellow);
-}
-
-.page {
-    background-color: var(--primary-medium-color);
-}
-
-body, dialog {
-    color: var(--primary-text-color);
-    border-color: var(--primary-text-color);
-    transition: color var(--gradient-duration) var(--gradient-easing),
-                border-color var(--gradient-duration) var(--gradient-easing);
-}
 
 
 
