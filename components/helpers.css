@@ -10,3 +10,9 @@
     white-space: nowrap;
     border: 0;
 }
+
+.unset {
+    all: unset;
+    outline: revert;
+    box-sizing: border-box;
+}

@@ -1,44 +1,41 @@
 :root {
-    --click-duration: 200ms;
+    --click-duration: 150ms;
     --click-easing: ease;
-}
-
-.btn {
-    all: unset;
-    outline: revert;
-    box-sizing: border-box;
 }
 
 .btn--icon {
     display: inline-grid;
     place-items: center;
-    padding: 0.5rem;
+    padding: 0.75rem;
     cursor: pointer;
-    transition: scale var(--click-duration) var(--click-easing);
+    transition-property: scale, --press;
+    transition-duration: var(--click-duration);
+    transition-timing-function: var(--click-easing);
+    border-radius: 50%;
 }
 
 .btn--icon svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 .btn--icon:hover {
-    scale: 1.2;
+    scale: 1.1;
 }
 
 .btn--icon:active {
-    scale: 0.8;
+    scale: 0.9;
 }
 
 .btn--icon--dual svg:last-child {
     display: none;
 }
 
-.dark-theme .btn--icon--dual svg:first-child {
+html.dark-theme .btn--icon--dual svg:first-child {
     display: none;
 }
 
-.dark-theme .btn--icon--dual svg:last-child {
+html.dark-theme .btn--icon--dual svg:last-child {
     display: block;
 }
 
@@ -52,8 +49,9 @@
     scale: 0.9;
 }
 
-
-
+.btn--neu:active {
+    --press: 1;
+}
 
 
 

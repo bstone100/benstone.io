@@ -1,8 +1,10 @@
 @import url("components/base.css");
+@import url("components/helpers.css");
+
 @import url("components/layout.css");
 @import url("components/colors.css");
-@import url("components/shadows.css");
-@import url("components/helpers.css");
-@import url("components/buttons.css");
 @import url("components/typography.css");
+@import url("components/shadows.css");
+
+@import url("components/buttons.css");
 @import url("components/dialogs.css");

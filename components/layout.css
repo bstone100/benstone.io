@@ -24,6 +24,10 @@
     }
 }
 
+.header-details .button-group {
+    margin-top: 8px;
+}
+
 .photo {
     width: 150px;
     height: auto;
@@ -34,6 +38,10 @@
 .image-slides {
     display: grid;
     grid-template-columns: auto 1fr auto;
+}
+
+.image-slides > button {
+    place-self: center;
 }
 
 .images {

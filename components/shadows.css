@@ -1,19 +1,7 @@
-:root {
-
-}
-
-#test-button {
-    --w: 200px;
-    --h: 100px;
-    --d-ratio: .05;
-    --d: calc(var(--d-ratio) * max(var(--w), var(--h))); /* this makes the highlight and shadow size proportional to the element size (width) */
+.neu {
+    --d: 6px;
     --i: .07; /* this is a factor to increase the lightness of the highlight and the darkness of the shadow */
     --b: 1.5; /* factor to influence the blur */
-
-    width: var(--w);
-    height: var(--h);
-    justify-self: center;
-
 
     /* The following variables are each box shadows.
        They are functions of --d, --press, --b, --background-color, --i.
@@ -45,14 +33,6 @@
                 var(--shadow-outset),
                 var(--highlight-inset),
                 var(--shadow-inset);
-
-    border-radius: 20px;
-
-    text-align: center;
-    cursor: pointer;
-
-    transition: --press 150ms,
-                scale 150ms;
 }
 
 /* this property will track the pressed state of the button with 0 being not pressed and 1 being pressed */
@@ -61,20 +41,6 @@
     inherits: false;
     initial-value: 0;
 }
-
-#test-button:hover {
-    scale: 1.05;
-}
-
-#test-button:active {
-    --press: 1;
-    scale: 0.95;
-}
-
-
-
-
-
 
 
 
