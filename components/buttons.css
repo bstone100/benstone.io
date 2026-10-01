@@ -40,7 +40,9 @@ html.dark-theme .btn--icon--dual svg:last-child {
 }
 
 .btn--photo {
-    transition: scale var(--click-duration) var(--click-easing);
+    transition-property: scale, --press;
+    transition-duration: var(--click-duration);
+    transition-timing-function: var(--click-easing);
     cursor: pointer;
 }
 
