@@ -13,18 +13,20 @@ document.querySelector("#image-slides-right-button").addEventListener("click", (
 
 const buttons = document.querySelectorAll("button.btn--photo");
 
+/* Let's modify this so that we transition the image container instead of the image.
+*  The thumbnail container is the button, and the dialog container is a div, both .photo-container.
+*/
 buttons.forEach(button => {
     const dialog = document.getElementById(button.dataset.dialog); // get the correct dialog
-    const dialogImage = dialog.querySelector("img");
-    const thumbnailImage = button.querySelector("img");
+    const dialogContainer = dialog.querySelector(".photo-container");
 
     button.addEventListener("click", () => {
         // expand the thumbnail image to full screen with an animation
         if (document.startViewTransition) {
-            thumbnailImage.style.viewTransitionName = button.dataset.dialog; // makes browser take "old" snapshot of thumbnail
+            button.style.viewTransitionName = button.dataset.dialog; // makes browser take "old" snapshot of thumbnail
             document.startViewTransition(() => {
-                thumbnailImage.style.viewTransitionName = "";
-                dialogImage.style.viewTransitionName = button.dataset.dialog; // makes browser take "new" snapshot of full image
+                button.style.viewTransitionName = "";
+                dialogContainer.style.viewTransitionName = button.dataset.dialog; // makes browser take "new" snapshot of full image
                 dialog.showModal();
             });
         } else {
@@ -39,13 +41,13 @@ buttons.forEach(button => {
                 // browser will take "old" snapshot of dialog image before callback is processed
                 const t = document.startViewTransition(() => {
                     // before closing dialog, transfer name to thumbnail so that the browser makes the thumbnail the "new" snapshot
-                    dialogImage.style.viewTransitionName = "";
-                    thumbnailImage.style.viewTransitionName = button.dataset.dialog;
+                    dialogContainer.style.viewTransitionName = "";
+                    button.style.viewTransitionName = button.dataset.dialog;
                     dialog.close();
                 });
                 t.finished.then(() => {
                     // remove after closing so that animation doesn't get triggered when this isn't the target image
-                    thumbnailImage.style.viewTransitionName = "";
+                    button.style.viewTransitionName = "";
                 });
             } else {
                 dialog.close();

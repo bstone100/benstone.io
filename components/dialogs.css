@@ -1,5 +1,5 @@
 .photo-dialog {
-    padding: 0;
+    padding: 1rem; /* to make the box shadows visible */
     border: 0;
     background-color: transparent;
 }
@@ -9,10 +9,17 @@
     backdrop-filter: blur(5px);
 }
 
+.photo-dialog .photo-container {
+    background-color: var(--background-color);
+    border-radius: calc(var(--photo-container-radius) * 2);
+    padding: calc(var(--photo-container-padding) * 2);
+}
+
 .photo-dialog .photo {
     /* allow the image to try to take its natural size but constrain it */
     max-width: 80vw;
     max-height: 80vh;
     width: auto;
     height: auto;
+    border-radius: calc((var(--photo-container-radius) - var(--photo-container-padding)) * 2);
 }

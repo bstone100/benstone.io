@@ -3,6 +3,9 @@
     --button-group-gap: 0.5rem;
     --layout-gap-medium: 1.5rem;
     --layout-gap-small: 1rem;
+
+    --photo-container-radius: 20px;
+    --photo-container-padding: 10px;
 }
 
 .top-row {
@@ -56,16 +59,16 @@
 }
 
 .photo-container {
-    border-radius: 10%;
     display: grid;
-    padding: 1ch;
+    border-radius: var(--photo-container-radius);
+    padding: var(--photo-container-padding);
 }
 
 .photo {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 10%;
+    border-radius: calc(var(--photo-container-radius) - var(--photo-container-padding));
 }
 
 .images img {
