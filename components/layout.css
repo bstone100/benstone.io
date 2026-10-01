@@ -46,6 +46,7 @@
     place-items: center;
     gap: var(--layout-gap-small);
     padding: var(--layout-gap-small);
+    scroll-padding-inline: var(--layout-gap-small);
 }
 
 @media (prefers-reduced-motion: no-preference) {
