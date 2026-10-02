@@ -17,9 +17,93 @@
 
 .photo-dialog .photo-full {
     /* allow the image to try to take its natural size but constrain it */
-    max-width: 80vw;
-    max-height: 80vh;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: calc((var(--photo-container-radius) - var(--photo-container-padding)) * 2);
 }
+
+/* implement dialog animation on the profile pic */
+
+.header > button {
+    anchor-name: --pfp;
+}
+
+.header > dialog {
+    margin: 0;
+    padding: 0;
+    display: grid;
+
+    /* start and end state */
+    /* anchored to the thumbnail */
+    /* match the thumbnail state */
+    position-anchor: --pfp;
+    width: anchor-size();
+    height: anchor-size();
+    inset: anchor(inside);
+    visibility: hidden;
+    transform: none;
+    border: var(--photo-container-padding) solid var(--background-color);
+    border-radius: var(--photo-container-radius);
+
+    max-width: 100%;
+    max-height: 100%;
+
+    transition-property: width, height, inset, visibility, transform, overlay, border, border-radius;
+    transition-duration: 1000ms;
+    transition-behavior: allow-discrete;
+}
+
+.header > dialog[open] {
+    /* open state */
+    width: min(100vw, var(--w), calc(100vh * var(--w) / var(--h)));
+    height: min(100vh, var(--h), calc(100vw * var(--h) / var(--w)));
+    inset: 0;
+    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+    visibility: visible;
+
+    border: calc(var(--photo-container-padding) * 2) solid var(--background-color);
+    border-radius: calc(var(--photo-container-radius) * 2);
+}
+
+/* end state (closed) */
+.header > dialog::backdrop {
+    opacity: 0;
+    transition: opacity 1000ms;
+}
+
+/* middle state (open) */
+.header > dialog[open]::backdrop {
+    opacity: 1;
+}
+
+/* start state (closed) */
+@starting-style {
+    .header > dialog[open]::backdrop {
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
