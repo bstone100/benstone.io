@@ -15,7 +15,7 @@
     padding: calc(var(--photo-container-padding) * 2);
 }
 
-.photo-dialog .photo {
+.photo-dialog .photo-full {
     /* allow the image to try to take its natural size but constrain it */
     max-width: 80vw;
     max-height: 80vh;

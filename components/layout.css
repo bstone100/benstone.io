@@ -64,7 +64,7 @@
     padding: var(--photo-container-padding);
 }
 
-.photo {
+.photo-thumbnail {
     width: 150px;
     height: 150px;
     object-fit: cover;
