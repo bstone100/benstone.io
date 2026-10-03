@@ -52,6 +52,7 @@
     margin: 0;
     padding: 0;
     display: block;
+    position: fixed;
     background-color: var(--background-color);
 
     /* start and end state */

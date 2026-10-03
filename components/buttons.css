@@ -46,9 +46,14 @@ html.dark-theme .btn--icon--dual svg:last-child {
     cursor: pointer;
 }
 
-.btn--photo:hover,
-.btn--photo:active {
-    scale: 0.9;
+/*
+    Hover state was getting stuck in mobile.
+    Scale was interfering with dialog close animation.
+*/
+@media (hover: hover) {
+    .btn--photo:hover{
+        scale: 0.9;
+    }
 }
 
 .btn--neu:active {
