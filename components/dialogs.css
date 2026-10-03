@@ -7,7 +7,6 @@
 
 }
 
-
 /*
     .photo-group
             .photo-container
@@ -39,6 +38,13 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition-property: border-radius;
+    transition-duration: var(--dialog-animation-duration);
+    transition-easing: var(--dialog-animation-easing);
+    border-radius: calc(var(--photo-border-radius) - var(--photo-border-size));
+}
+
+.photo-dialog[open] .photo-full {
     border-radius: calc((var(--photo-border-radius) - var(--photo-border-size)) * 2);
 }
 
