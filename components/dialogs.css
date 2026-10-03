@@ -90,24 +90,22 @@
 
 /* end state (closed) */
 .photo-dialog::backdrop {
-    background-color: rgb(from var(--background-color) r g b / 30%);
-    backdrop-filter: blur(5px);
-
-    opacity: 0;
-    transition: opacity;
+    background-color: transparent;
+    backdrop-filter: none;
+    transition: backdrop-filter;
     transition-duration: var(--dialog-animation-duration);
     transition-timing-function: var(--dialog-animation-easing);
 }
 
 /* middle state (open) */
 .photo-dialog[open]::backdrop {
-    opacity: 1;
+    backdrop-filter: blur(10px);
 }
 
 /* start state (closed) */
 @starting-style {
     .photo-dialog[open]::backdrop {
-        opacity: 0;
+        backdrop-filter: none;
     }
 }
 
