@@ -1,90 +1,110 @@
-.photo-dialog {
-    padding: 1rem; /* to make the box shadows visible */
-    border: 0;
-    background-color: transparent;
+:root {
+    --dialog-animation-duration: 300ms;
+    --dialog-animation-easing: ease;
+
+    --photo-border-radius: 20px;
+    --photo-border-size: 10px;
+
 }
 
-.photo-dialog::backdrop {
-    background-color: rgb(from var(--background-color) r g b / 20%);
-    backdrop-filter: blur(5px);
+
+/*
+    .photo-group
+            .photo-container
+                    .photo-thumbnail
+            .photo-dialog
+                    .photo-full
+*/
+
+.photo-group {
+    anchor-scope: --a;
 }
 
-.photo-dialog .photo-container {
-    background-color: var(--background-color);
-    border-radius: calc(var(--photo-container-radius) * 2);
-    padding: calc(var(--photo-container-padding) * 2);
+.photo-container {
+    anchor-name: --a;
+    display: grid;
+    border-radius: var(--photo-border-radius);
+    padding: var(--photo-border-size);
 }
 
-.photo-dialog .photo-full {
-    /* allow the image to try to take its natural size but constrain it */
+.photo-thumbnail {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: calc(var(--photo-border-radius) - var(--photo-border-size));
+}
+
+.photo-full {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: calc((var(--photo-container-radius) - var(--photo-container-padding)) * 2);
+    border-radius: calc((var(--photo-border-radius) - var(--photo-border-size)) * 2);
 }
 
-/* implement dialog animation on the profile pic */
-
-.header > button {
-    anchor-name: --pfp;
-}
-
-.header > dialog {
+.photo-dialog {
     margin: 0;
     padding: 0;
     display: grid;
+    background-color: var(--background-color);
 
     /* start and end state */
     /* anchored to the thumbnail */
     /* match the thumbnail state */
-    position-anchor: --pfp;
+    position-anchor: --a;
     width: anchor-size();
     height: anchor-size();
     inset: anchor(inside);
     visibility: hidden;
     transform: none;
-    border: var(--photo-container-padding) solid var(--background-color);
-    border-radius: var(--photo-container-radius);
+    border: var(--photo-border-size) solid var(--background-color);
+    border-radius: var(--photo-border-radius);
 
     max-width: 100%;
     max-height: 100%;
 
     transition-property: width, height, inset, visibility, transform, overlay, border, border-radius;
-    transition-duration: 1000ms;
+    transition-duration: var(--dialog-animation-duration);
+    transition-timing-function: var(--dialog-animation-easing);
     transition-behavior: allow-discrete;
 }
 
-.header > dialog[open] {
+.photo-dialog[open] {
     /* open state */
-    width: min(100vw, var(--w), calc(100vh * var(--w) / var(--h)));
-    height: min(100vh, var(--h), calc(100vw * var(--h) / var(--w)));
+    --p: 20px;
+    --max-w: calc(80vw - var(--p));
+    --max-h: calc(80vh - var(--p));
+    width: calc(min(var(--max-w), var(--max-h) * var(--w) / var(--h)) + var(--p));
+    height: calc(min(var(--max-h), var(--max-w) * var(--h) / var(--w)) + var(--p));
     inset: 0;
     transform: translate(calc(50vw - 50%), calc(50vh - 50%));
     visibility: visible;
 
-    border: calc(var(--photo-container-padding) * 2) solid var(--background-color);
-    border-radius: calc(var(--photo-container-radius) * 2);
+    border: calc(var(--photo-border-size) * 2) solid var(--background-color);
+    border-radius: calc(var(--photo-border-radius) * 2);
 }
 
 /* end state (closed) */
-.header > dialog::backdrop {
+.photo-dialog::backdrop {
+    background-color: rgb(from var(--background-color) r g b / 30%);
+    backdrop-filter: blur(5px);
+
     opacity: 0;
-    transition: opacity 1000ms;
+    transition: opacity;
+    transition-duration: var(--dialog-animation-duration);
+    transition-timing-function: var(--dialog-animation-easing);
 }
 
 /* middle state (open) */
-.header > dialog[open]::backdrop {
+.photo-dialog[open]::backdrop {
     opacity: 1;
 }
 
 /* start state (closed) */
 @starting-style {
-    .header > dialog[open]::backdrop {
+    .photo-dialog[open]::backdrop {
         opacity: 0;
     }
 }
-
-
 
 
 
