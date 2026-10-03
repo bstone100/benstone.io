@@ -38,31 +38,31 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     border-radius: calc((var(--photo-border-radius) - var(--photo-border-size)) * 2);
 }
 
 .photo-dialog {
     margin: 0;
     padding: 0;
-    display: grid;
+    display: block;
     background-color: var(--background-color);
 
     /* start and end state */
     /* anchored to the thumbnail */
     /* match the thumbnail state */
     position-anchor: --a;
-    width: anchor-size();
-    height: anchor-size();
+    width: auto;
+    height: auto;
     inset: anchor(inside);
     visibility: hidden;
-    transform: none;
     border: var(--photo-border-size) solid var(--background-color);
     border-radius: var(--photo-border-radius);
 
-    max-width: 100%;
-    max-height: 100%;
+    max-width: none;
+    max-height: none;
 
-    transition-property: width, height, inset, visibility, transform, overlay, border, border-radius;
+    transition-property: inset, visibility, overlay, border, border-radius;
     transition-duration: var(--dialog-animation-duration);
     transition-timing-function: var(--dialog-animation-easing);
     transition-behavior: allow-discrete;
@@ -70,13 +70,12 @@
 
 .photo-dialog[open] {
     /* open state */
-    --p: 20px;
+    --p: 40px;
     --max-w: calc(80vw - var(--p));
     --max-h: calc(80vh - var(--p));
-    width: calc(min(var(--max-w), var(--max-h) * var(--w) / var(--h)) + var(--p));
-    height: calc(min(var(--max-h), var(--max-w) * var(--h) / var(--w)) + var(--p));
-    inset: 0;
-    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+    --width: calc(min(var(--max-w), var(--max-h) * var(--w) / var(--h)) + var(--p));
+    --height: calc(min(var(--max-h), var(--max-w) * var(--h) / var(--w)) + var(--p));
+    inset: calc(50% - var(--height) / 2) calc(50% - var(--width) / 2);
     visibility: visible;
 
     border: calc(var(--photo-border-size) * 2) solid var(--background-color);
