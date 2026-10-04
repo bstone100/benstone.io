@@ -15,8 +15,22 @@
                     .photo-full
 */
 
+/* this is a continuous value from 1 to 0 representing the closed state of the dialog */
+/* exactly 1 means fully closed, < 1 means not closed (fully open or animating) */
+@property --dialog-closed {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 1;
+}
+
 .photo-group {
     anchor-scope: --a;
+    --dialog-closed: 1;
+    transition: --dialog-closed var(--dialog-animation-duration) var(--dialog-animation-easing);
+}
+
+.photo-group:has(> .photo-dialog[open]) {
+    --dialog-closed: 0;
 }
 
 .photo-container {
@@ -24,6 +38,8 @@
     display: grid;
     border-radius: var(--photo-border-radius);
     padding: var(--photo-border-size);
+    /* hide the thumbnail except for when the dialog is fully closed */
+    opacity: round(down, var(--dialog-closed));
 }
 
 .photo-thumbnail {
@@ -40,7 +56,7 @@
     display: block;
     transition-property: border-radius;
     transition-duration: var(--dialog-animation-duration);
-    transition-easing: var(--dialog-animation-easing);
+    transition-timing-function: var(--dialog-animation-easing);
     border-radius: calc(var(--photo-border-radius) - var(--photo-border-size));
 }
 
