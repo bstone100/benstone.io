@@ -24,7 +24,6 @@
 }
 
 .photo-group {
-    anchor-scope: --a;
     --dialog-closed: 1;
     transition: --dialog-closed var(--dialog-animation-duration) var(--dialog-animation-easing);
 }
@@ -34,12 +33,11 @@
 }
 
 .photo-container {
-    anchor-name: --a;
     display: grid;
     border-radius: var(--photo-border-radius);
     padding: var(--photo-border-size);
     /* hide the thumbnail except for when the dialog is fully closed */
-    opacity: round(down, var(--dialog-closed));
+    opacity: round(down, var(--dialog-closed), 1);
 }
 
 .photo-thumbnail {
@@ -74,10 +72,10 @@
     /* start and end state */
     /* anchored to the thumbnail */
     /* match the thumbnail state */
-    position-anchor: --a;
     width: auto;
     height: auto;
-    inset: anchor(inside);
+    /* these custom properties are injected with JavaScript in the button click handler */
+    inset: var(--top) var(--right) var(--bottom) var(--left);
     visibility: hidden;
     border: var(--photo-border-size) solid var(--background-color);
     border-radius: var(--photo-border-radius);
