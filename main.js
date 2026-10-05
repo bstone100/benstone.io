@@ -30,7 +30,6 @@ const updateDialogAnimationTarget = (button, dialog) => {
         dialog.style.setProperty("transition", transition);
 }
 
-// const buttons = document.querySelectorAll("button.btn--photo");
 const photos = document.querySelectorAll(".photo-group");
 
 photos.forEach(photo => {
@@ -54,3 +53,10 @@ photos.forEach(photo => {
         updateDialogAnimationTarget(button, dialog);
     });
 });
+
+
+
+
+
+
+

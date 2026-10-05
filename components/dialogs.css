@@ -35,16 +35,16 @@
 .photo-container {
     display: grid;
     border-radius: var(--photo-border-radius);
-    padding: var(--photo-border-size);
+    border: var(--photo-border-size) solid var(--background-color);
     /* hide the thumbnail except for when the dialog is fully closed */
     opacity: round(down, var(--dialog-closed), 1);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .photo-thumbnail {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
     border-radius: calc(var(--photo-border-radius) - var(--photo-border-size));
+    backdrop-filter: blur(10px);
 }
 
 .photo-full {
