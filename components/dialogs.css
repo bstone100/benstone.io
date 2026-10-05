@@ -39,7 +39,6 @@
     /* hide the thumbnail except for when the dialog is fully closed */
     opacity: round(down, var(--dialog-closed), 1);
     background-size: cover;
-    background-repeat: no-repeat;
 }
 
 .photo-thumbnail {
@@ -56,6 +55,7 @@
     transition-duration: var(--dialog-animation-duration);
     transition-timing-function: var(--dialog-animation-easing);
     border-radius: calc(var(--photo-border-radius) - var(--photo-border-size));
+    backdrop-filter: blur(10px);
 }
 
 .photo-dialog[open] .photo-full {
@@ -68,6 +68,7 @@
     display: block;
     position: fixed;
     background-color: var(--background-color);
+    background-size: cover;
 
     /* start and end state */
     /* anchored to the thumbnail */
