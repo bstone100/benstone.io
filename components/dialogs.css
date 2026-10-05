@@ -103,25 +103,12 @@
     border-radius: calc(var(--photo-border-radius) * 2);
 }
 
-/* end state (closed) */
 .photo-dialog::backdrop {
     background-color: transparent;
-    backdrop-filter: none;
-    transition: backdrop-filter;
-    transition-duration: var(--dialog-animation-duration);
-    transition-timing-function: var(--dialog-animation-easing);
-}
-
-/* middle state (open) */
-.photo-dialog[open]::backdrop {
-    backdrop-filter: blur(10px);
-}
-
-/* start state (closed) */
-@starting-style {
-    .photo-dialog[open]::backdrop {
-        backdrop-filter: none;
-    }
+    --blur: 10px;
+    --filter: blur(calc(var(--blur) * (1 - var(--dialog-closed))));
+    -webkit-backdrop-filter: var(--filter);
+    backdrop-filter: var(--filter);
 }
 
 
