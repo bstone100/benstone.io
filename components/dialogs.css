@@ -2,9 +2,9 @@
     --dialog-animation-duration: 300ms;
     --dialog-animation-easing: ease;
 
+    /* in the thumbnail state */
     --photo-border-radius: 20px;
     --photo-border-size: 10px;
-
 }
 
 /*
@@ -92,21 +92,34 @@
 
 .photo-dialog[open] {
     /*
-        I derived this on paper...
         Basically, we're calculating the width and height of the dialog such that dialog's content box preserves the aspect ratio of the image.
     */
     --border-size: calc(var(--photo-border-size) * 2);
-    --space-from-page-edge: 20px;
-    --page-width: 100vw;
-    --page-height: 100vh;
-    --original-image-width: var(--w);
-    --original-image-height: var(--h);
-    --frame-width: min(calc(var(--page-width) - (2 * var(--space-from-page-edge))), calc((var(--original-image-width) * ((var(--page-height) - (2 * var(--space-from-page-edge))) - (2 * var(--border-size))) / var(--original-image-height)) + (2 * var(--border-size))));
-    --frame-height: min(calc(var(--page-height) - (2 * var(--space-from-page-edge))), calc((var(--original-image-height) * ((var(--page-width) - (2 * var(--space-from-page-edge))) - (2 * var(--border-size))) / var(--original-image-width)) + (2 * var(--border-size))));
+    --space-from-page-edge: var(--layout-gap-medium);
+
+    /* this is the room in which the dialog's content box could be */
+    --room-width: calc(100vw - 2 * var(--space-from-page-edge) - 2 * var(--border-size));
+    --room-height: calc(100svh - 2 * var(--space-from-page-edge) - 2 * var(--border-size));
+
+    --aspect-ratio: calc(var(--w) / var(--h));
+
+    /*
+        For a landscape image, the content box width takes up the full horizontal room.
+        For a portrait image, the content box height takes up the full vertical room,
+        and therefore the content box width can be computed from the room height and aspect ratio.
+        With the content box width calculated, the content box height can be computed from it and the aspect ratio.
+        formula: content-box-width / content-box-height = image-width / image-height
+    */
+    --content-box-width: min(var(--room-width), var(--room-height) * var(--aspect-ratio));
+    --content-box-height: calc(var(--content-box-width) / var(--aspect-ratio));
+
+    --frame-width: calc(var(--content-box-width) + 2 * var(--border-size));
+    --frame-height: calc(var(--content-box-height) + 2 * var(--border-size));
+
     inset: calc(50% - (var(--frame-height) / 2)) calc(50% - (var(--frame-width) / 2));
     visibility: visible;
 
-    border: calc(var(--photo-border-size) * 2) solid var(--background-color);
+    border: var(--border-size) solid var(--background-color);
     border-radius: calc(var(--photo-border-radius) * 2);
 }
 
