@@ -95,11 +95,10 @@
         Basically, we're calculating the width and height of the dialog such that dialog's content box preserves the aspect ratio of the image.
     */
     --border-size: calc(var(--photo-border-size) * 2);
-    --space-from-page-edge: var(--layout-gap-medium);
 
     /* this is the room in which the dialog's content box could be */
-    --room-width: calc(100vw - 2 * var(--space-from-page-edge) - 2 * var(--border-size));
-    --room-height: calc(100svh - 2 * var(--space-from-page-edge) - 2 * var(--border-size));
+    --room-width: calc(100vw - 2 * var(--layout-gap-medium) - 2 * var(--border-size));
+    --room-height: calc(100svh - 2 * var(--layout-gap-medium) - 2 * var(--border-size));
 
     --aspect-ratio: calc(var(--w) / var(--h));
 
@@ -109,8 +108,9 @@
         and therefore the content box width can be computed from the room height and aspect ratio.
         With the content box width calculated, the content box height can be computed from it and the aspect ratio.
         formula: content-box-width / content-box-height = image-width / image-height
+        also, don't let it be bigger than it's own width
     */
-    --content-box-width: min(var(--room-width), var(--room-height) * var(--aspect-ratio));
+    --content-box-width: min(var(--w) * 1px, var(--room-width), var(--room-height) * var(--aspect-ratio));
     --content-box-height: calc(var(--content-box-width) / var(--aspect-ratio));
 
     --frame-width: calc(var(--content-box-width) + 2 * var(--border-size));
