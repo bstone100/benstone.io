@@ -42,6 +42,27 @@
     initial-value: 0;
 }
 
+.neu--round {
+    /* we're going to apply a linear gradient to the background of the element */
+    /* when pressed, swap the colors */
+    /* this class covers both the convex and concave state */
+
+    /*
+        - top left will interpolate between lighter-than-background and darker-than-background, depending on --press
+        - opacity will not change
+        - top left: when not pressed (--press = 0), this part is highlighted
+        - top left: when pressed (--press = 1), this part is shadowed
+        - bottom right: when not pressed (--press = 0), this part is shadowed
+        - bottom right: when pressed (--press = 1), this part is highlighted
+        formula top left color: tlc(l, i, p) = (l - i) + (1 - p)(2i)
+        formula bottom right color: brc(l, i, p) = (l - i) + p(2i)
+    */
+
+    --top-left-color: oklch(from var(--background-color) calc(l - var(--i) + (1 - var(--press)) * 2 * var(--i)) c h);
+    --bottom-right-color: oklch(from var(--background-color) calc(l - var(--i) + var(--press) * 2 * var(--i)) c h);
+
+    background-image: linear-gradient(145deg, var(--top-left-color), var(--bottom-right-color));
+}
 
 
 

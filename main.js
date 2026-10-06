@@ -54,6 +54,25 @@ photos.forEach(photo => {
     });
 });
 
+const tabs = document.querySelectorAll(".pill-tabs .pill");
+
+window.addEventListener("hashchange", (event) => {
+    console.log(event);
+
+    tabs.forEach(tab => {
+        tab.classList.remove("current");
+    });
+
+    const hash = new URL(event.newURL).hash;
+
+    const currentTab = document.querySelector(`[href="${hash}"]`);
+
+    if (currentTab) {
+        currentTab.classList.add("current");
+    }
+});
+
+
 
 
 
