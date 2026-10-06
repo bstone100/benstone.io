@@ -56,23 +56,25 @@ photos.forEach(photo => {
 
 const tabs = document.querySelectorAll(".pill-tabs .pill");
 
-window.addEventListener("hashchange", (event) => {
-    console.log(event);
-
+const updateCurrentTab = (oldHash, newHash) => {
     tabs.forEach(tab => {
         tab.classList.remove("current");
     });
 
-    const hash = new URL(event.newURL).hash;
-
-    const currentTab = document.querySelector(`[href="${hash}"]`);
+    const currentTab = document.querySelector(`[href="${newHash}"]`);
 
     if (currentTab) {
         currentTab.classList.add("current");
     }
+}
+
+// when the user clicks a different tab
+window.addEventListener("hashchange", (event) => {
+    updateCurrentTab(new URL(event.oldURL).hash, new URL(event.newURL).hash);
 });
 
-
+// when the page first loads
+updateCurrentTab("", location.hash);
 
 
 
