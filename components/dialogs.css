@@ -91,13 +91,19 @@
 }
 
 .photo-dialog[open] {
-    /* open state */
-    --p: 40px;
-    --max-w: calc(80vw - var(--p));
-    --max-h: calc(80vh - var(--p));
-    --width: calc(min(var(--max-w), var(--max-h) * var(--w) / var(--h)) + var(--p));
-    --height: calc(min(var(--max-h), var(--max-w) * var(--h) / var(--w)) + var(--p));
-    inset: calc(50% - var(--height) / 2) calc(50% - var(--width) / 2);
+    /*
+        I derived this on paper...
+        Basically, we're calculating the width and height of the dialog such that dialog's content box preserves the aspect ratio of the image.
+    */
+    --border-size: calc(var(--photo-border-size) * 2);
+    --space-from-page-edge: 20px;
+    --page-width: 100vw;
+    --page-height: 100vh;
+    --original-image-width: var(--w);
+    --original-image-height: var(--h);
+    --frame-width: min(calc(var(--page-width) - (2 * var(--space-from-page-edge))), calc((var(--original-image-width) * ((var(--page-height) - (2 * var(--space-from-page-edge))) - (2 * var(--border-size))) / var(--original-image-height)) + (2 * var(--border-size))));
+    --frame-height: min(calc(var(--page-height) - (2 * var(--space-from-page-edge))), calc((var(--original-image-height) * ((var(--page-width) - (2 * var(--space-from-page-edge))) - (2 * var(--border-size))) / var(--original-image-width)) + (2 * var(--border-size))));
+    inset: calc(50% - (var(--frame-height) / 2)) calc(50% - (var(--frame-width) / 2));
     visibility: visible;
 
     border: calc(var(--photo-border-size) * 2) solid var(--background-color);
