@@ -35,7 +35,7 @@
                                      assets/thumbnails/grad-450.avif 3x">
                     </button>
                     <dialog id="profile-photo-dialog" class="photo-dialog neu" style="--w: 638; --h: 630; background-image: url(data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAsYAAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAEIAAABBAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAMAAAAABNjb2xybmNseAACAAIABoAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAAs5tZGF0EgAKCRgZoMBggQEDQjK2BRIAAooooUDZI3Te6LXOLlEiBPHxge09s9v6j7Kp8TWc9aF4CA44bMoj1BXDq7+y+3AYqNUCOtM87bf2be8lGDK+ZQies1CeU8YCcZdpCFsKxjoyjgVVF3rfE/f8eOAO/V8fNIq89bHRYmeQp3+DaahJP+nW0EfQTLWgH2hWZiSBQb0tfOgHXi60QSE3DdUuUl9e8LoViBPnMMJtK1M9cMa9b2kanGH11Hu7cUEMRlEBgkh5hnVk0ZMYq/6Lxw7pzDSelWxRLsVzsemOJ02MYhDDRvZwyguGuxGskAi/C2XT7KXxXwYVm5uzMbqoq/y14NsgW8TmuCTZ1XGepYdi6CbsD8zj8QlyjOw7reirRz0ItTEy0QKh3NKUqvrDM4npx727HfdT3z8Rf9kIGwGbG0/Ua6JJBDXLxCzc+aWqo87AF6MH8e/pbonBltkFmvZj39TI9DeJbbyqIYnXnjrKXjxuFXmor438vlmNzAHcmD4eXRQrXtN3KGTGaBAvqur0hHTwzw4MsbeEjZS6lKxftIi29zaNglQnqU0aij7ByTnPemUBrdMQMHMaezJhrJSmSVo83xadZVDYhF2jNQfOLNdOOyg8/gt0sY/sXnSnqB3EdNTBi1i9gZj+xFq+8Hern8d/1WtHccAOVnLL2TprK7JZ5y+TaXcyjO5mH8BRh2Y8DNPgi01cppFh4j44UDjh14mCUBa+2rpZ7tj9o3zsg41sN5LKpOLGAx/wf4Y4BreMhTRkcKNT6bj2/YNOdTrvYy3S3bUynjWJr6mAEtVte8sot3PbdkWnTGUJU2f8l+wofGeq4k9xjzUe4k2jomswmgobohCPEJ+iVAfE/DsaeTs8F1rb9XCYTCMJgVAgB4n6qSkg2nmfo1XzCy0gUF5OijBG2ROq/4ELLIW+oqWPFLRK/DfSlGA=)">
-                        <img src="assets/full/grad-638.avif" width="638" height="630" alt="Benjamin Stone college graduation photo" class="photo-full">
+                        <img src="assets/full/grad-638.avif" width="638" height="630" alt="Benjamin Stone college graduation photo" class="photo-full" fetchpriority="low">
                     </dialog>
                 </div>
                 <div class="header-details">
@@ -73,7 +73,7 @@
 
                                     <!-- The sizes calculation is the same calculation as --content-box-width in .photo-dialog[open] in dialogs.css -->
                                     <!-- unfortunately you cannot use css variables in this query -->
-                                    <img src="assets/full/sf-1440.avif" width="3024" height="4032" alt="Benjamin in San Francisco" class="photo-full"
+                                    <img src="assets/full/sf-1440.avif" width="3024" height="4032" alt="Benjamin in San Francisco" class="photo-full" fetchpriority="low"
                                          srcset="assets/full/sf-600.avif 600w,
                                                  assets/full/sf-960.avif 960w,
                                                  assets/full/sf-1440.avif 1440w,
@@ -89,7 +89,7 @@
                                                  assets/thumbnails/niners-450.avif 3x">
                                 </button>
                                 <dialog id="niners-photo-dialog" class="photo-dialog neu" style="--w: 2332; --h: 1749; background-image: url(data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAqwAAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAADcAAAApAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAMAAAAABNjb2xybmNseAACAAIABoAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAArRtZGF0EgAKCRgVdqGCBAQNCDKcBRgACiiihQDdLMg+Vqql61RhdInnaU9T+4wp/oL+3flq4uIPm7N3rCxUH3qFmyO/iBfLIdYkVsY995IpNm7iVqa9Riym0+7tr1VaMCVUQvMWFoJfEj8WiNI2NqjBb+Euf9mQ2jttMQUV10UEKYJYjEwDRu3hmxNPfFLMTV6QkhMpDzXUA5FORAFi9fvIMNzDptb25w0s9D+r7EmhVs7/hVri3wcHNUIXSXd19kHlvn4Fv17jmjYTK+aGqmQRYjv6KTKB5ofqOw8knAXQL5UCXWnhRrtTzFctsJ4n8jZYpUkcCeZ+zkl9+sRLqQbrc+J0JIL3mBdczHX9mICt0oGAcCV1ZAcCyX03x16r2VZ6OpwFojbd+lJ13/yo9DpToavGlihj2i3CibG8lxJzTTcSe/wdF4dzeUQqls2m5GTjWn3PQzdLJkmhtDvwB5J/4apOvevpTCX+4i0lL1KVeUqvg8cSLppCz1GfcUhe+whPu7xshNlt2kcoLs8TOjLtWFWA02d672VLXw5VxHdtkAIWuh2Ugco5O1I6petsfA6BdYnz9B2Bmzdbf8fJK9fMZqGt1fZRX2BikJCzRrccorZH1YSMxKNZXjjXkNf7jdakW6vxo1k0RzIeakQEXiSwErT7W5LG70oa6xq8JMSz2Br9z7pJPZOAyRnqCngGhickvF7nZAHOuKELMJSdRdKfJ6i9CDxREC0WoXyHYkIKB+QhwksRo8hsNMogcFpGc4wF9M7kE0KxRKKtZuhYDlPEKlg1yvQkP4ETb5L5FvCdFFWM8hdncBLT2WEeZ03gpHPwjx5nI4tduUAiQHPXAGgHuuN2nsbmWuQ1feDodwAc5tL8T0Qn9WlLJzhc9mrZF5dOWkEyky41Ky8xfiy3q7NQ)">
-                                    <img src="assets/full/niners-1280.avif" width="2332" height="1749" alt="Benjamin at a 49ers  game" class="photo-full"
+                                    <img src="assets/full/niners-1280.avif" width="2332" height="1749" alt="Benjamin at a 49ers  game" class="photo-full" fetchpriority="low"
                                          srcset="assets/full/niners-800.avif 800w,
                                                  assets/full/niners-1280.avif 1280w,
                                                  assets/full/niners-1920.avif 1920w,
