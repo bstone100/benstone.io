@@ -29,3 +29,18 @@
     color: gold;
 }
 
+.tab-section {
+    display: none;
+}
+
+.tab-section.current {
+    display: block;
+}
+
+
+
+
+
+
+
+

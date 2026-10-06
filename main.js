@@ -55,6 +55,7 @@ photos.forEach(photo => {
 });
 
 const tabs = document.querySelectorAll(".pill-tabs .pill");
+const tabSections = document.querySelectorAll(".tab-section");
 
 const updateCurrentTab = (oldHash, newHash) => {
     tabs.forEach(tab => {
@@ -65,6 +66,16 @@ const updateCurrentTab = (oldHash, newHash) => {
 
     if (currentTab) {
         currentTab.classList.add("current");
+    }
+
+    tabSections.forEach(tabSection => {
+        tabSection.classList.remove("current");
+    });
+
+    const currentSection = document.querySelector(`[data-section="${newHash}"]`);
+
+    if (currentSection) {
+        currentSection.classList.add("current");
     }
 }
 
