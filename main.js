@@ -1,3 +1,7 @@
+// this script will be deferred or run at the bottom of <body>
+// use it for registering event handlers but not for anything affecting the initial page render
+// inline those scripts instead
+
 document.querySelector("#toggle-theme-button").addEventListener("click", () => {
     document.documentElement.classList.toggle("dark-theme");
     localStorage.setItem("dark-theme", document.documentElement.classList.contains("dark-theme"));
@@ -54,38 +58,30 @@ photos.forEach(photo => {
     });
 });
 
-const tabs = document.querySelectorAll(".pill-tabs .pill");
+const tabAnchors = document.querySelectorAll(".pill-tabs .pill");
 const tabSections = document.querySelectorAll(".tab-section");
 
-const updateCurrentTab = (oldHash, newHash) => {
-    tabs.forEach(tab => {
-        tab.classList.remove("current");
+// when the user clicks a different tab
+window.addEventListener("hashchange", () => {
+
+    validateHash();
+
+    tabAnchors.forEach(tabAnchor => {
+        if (tabAnchor.dataset.section === location.hash) {
+            tabAnchor.classList.add("current");
+        } else {
+            tabAnchor.classList.remove("current");
+        }
     });
-
-    const currentTab = document.querySelector(`[href="${newHash}"]`);
-
-    if (currentTab) {
-        currentTab.classList.add("current");
-    }
 
     tabSections.forEach(tabSection => {
-        tabSection.classList.remove("current");
+        if (tabSection.dataset.section === location.hash) {
+            tabSection.classList.add("current");
+        } else {
+            tabSection.classList.remove("current");
+        }
     });
-
-    const currentSection = document.querySelector(`[data-section="${newHash}"]`);
-
-    if (currentSection) {
-        currentSection.classList.add("current");
-    }
-}
-
-// when the user clicks a different tab
-window.addEventListener("hashchange", (event) => {
-    updateCurrentTab(new URL(event.oldURL).hash, new URL(event.newURL).hash);
 });
-
-// when the page first loads
-updateCurrentTab("", location.hash);
 
 
 

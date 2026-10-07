@@ -42,6 +42,25 @@
             }
         } catch {}
     </script>
+
+    <script>
+        const sections = ["#experience", "#education", "#projects", "#certificates"];
+
+        const validateHash = () => {
+            if (!sections.includes(location.hash)) location.hash = sections[0];
+        }
+
+        validateHash();
+
+        // call this from a <script> which is the first child of the element you want to mark current
+        // this will assign the class before the element renders
+        const updateCurrentClass = () => {
+            const parent = document.currentScript.parentElement;
+            if (location.hash === parent.dataset.section) {
+                parent.classList.add("current");
+            }
+        }
+    </script>
   </head>
   <body>
     <div class="container page neu">
@@ -135,20 +154,33 @@
             <nav>
                 <ul class="pill-tabs">
                     <li>
-                        <a href="#experience" class="unset pill neu neu--round">Experience</a>
+                        <a href="#experience" data-section="#experience" class="unset pill neu neu--round">
+                            <script>updateCurrentClass()</script>
+                            <span>Experience</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#education" class="unset pill neu neu--round">Education</a>
+                        <a href="#education" data-section="#education" class="unset pill neu neu--round">
+                            <script>updateCurrentClass()</script>
+                            <span>Education</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#projects" class="unset pill neu neu--round">Projects</a>
+                        <a href="#projects" data-section="#projects" class="unset pill neu neu--round">
+                            <script>updateCurrentClass()</script>
+                            <span>Projects</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#certificates" class="unset pill neu neu--round">Certificates</a>
+                        <a href="#certificates" data-section="#certificates" class="unset pill neu neu--round">
+                            <script>updateCurrentClass()</script>
+                            <span>Certificates</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
-            <section class="tab-section" data-section="#experience">
+            <section class="tab-section" data-section="#experience" id="experience">
+                <script>updateCurrentClass()</script>
                 <h3>Experience</h3>
                 <ol>
                     <li>
@@ -178,7 +210,8 @@
                     </li>
                 </ol>
             </section>
-            <section class="tab-section" data-section="#education">
+            <section class="tab-section" data-section="#education" id="education">
+                <script>updateCurrentClass()</script>
                 <h3>Education</h3>
                 <ol>
                     <li>
@@ -188,7 +221,8 @@
                     </li>
                 </ol>
             </section>
-            <section class="tab-section" data-section="#projects">
+            <section class="tab-section" data-section="#projects" id="projects">
+                <script>updateCurrentClass()</script>
                 <h3>Projects</h3>
                 <ol>
                     <li>
@@ -207,7 +241,8 @@
                     </li>
                 </ol>
             </section>
-            <section class="tab-section" data-section="#certificates">
+            <section class="tab-section" data-section="#certificates" id="certificates">
+                <script>updateCurrentClass()</script>
                 <h3>Courses and Certificates</h3>
                 <ol>
                     <li>
