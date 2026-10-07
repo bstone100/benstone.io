@@ -37,7 +37,25 @@
     display: block;
 }
 
+.tab-section.current.right-to-left {
+    animation: rightToLeft 300ms;
+}
 
+.tab-section.current.left-to-right {
+    animation: leftToRight 300ms;
+}
+
+@keyframes rightToLeft {
+    from {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes leftToRight {
+    from {
+        transform: translateX(-100%);
+    }
+}
 
 
 

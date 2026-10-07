@@ -62,7 +62,7 @@ const tabAnchors = document.querySelectorAll(".pill-tabs .pill");
 const tabSections = document.querySelectorAll(".tab-section");
 
 // when the user clicks a different tab
-window.addEventListener("hashchange", () => {
+window.addEventListener("hashchange", (event) => {
 
     validateHash();
 
@@ -74,13 +74,38 @@ window.addEventListener("hashchange", () => {
         }
     });
 
+    const oldHash = new URL(event.oldURL).hash;
+
+    let oldSection;
+    let newSection;
+
     tabSections.forEach(tabSection => {
         if (tabSection.dataset.section === location.hash) {
             tabSection.classList.add("current");
+            tabSection.classList.remove("previous");
+            newSection = tabSection;
+        } else if (tabSection.dataset.section === oldHash) {
+            tabSection.classList.remove("current");
+            tabSection.classList.add("previous");
+            oldSection = tabSection;
         } else {
             tabSection.classList.remove("current");
+            tabSection.classList.remove("previous");
         }
     });
+
+    // we want to animate the current section in and the previous section out
+    // animation direction depends on tab index
+
+    const oldIndex = sections.indexOf(oldHash);
+    const newIndex = sections.indexOf(location.hash);
+
+    if (oldIndex === -1) return;
+
+    let animationDirection = newIndex - oldIndex > 0 ? "right-to-left" : "left-to-right";
+
+    newSection.classList.add(animationDirection);
+
 });
 
 
