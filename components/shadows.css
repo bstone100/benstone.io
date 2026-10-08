@@ -1,5 +1,5 @@
 .neu {
-    --d: 6px;
+    --d: 3px; /* this is the distance from the border that the shadow will go */
     --i: .07; /* this is a factor to increase the lightness of the highlight and the darkness of the shadow */
     --b: 1.5; /* factor to influence the blur */
 

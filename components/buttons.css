@@ -25,6 +25,7 @@
 
 .btn--icon:active {
     scale: 0.9;
+    --press: 1;
 }
 
 .btn--icon--dual svg:last-child {
@@ -55,11 +56,6 @@ html.dark-theme .btn--icon--dual svg:last-child {
         scale: 0.9;
     }
 }
-
-.btn--neu:active {
-    --press: 1;
-}
-
 
 
 
