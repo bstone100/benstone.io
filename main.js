@@ -102,10 +102,17 @@ window.addEventListener("hashchange", (event) => {
 
     if (oldIndex === -1) return;
 
-    let animationDirection = newIndex - oldIndex > 0 ? "right-to-left" : "left-to-right";
-
-    newSection.classList.add(animationDirection);
-
+    if (newIndex - oldIndex > 0) {
+        newSection.classList.add("right-to-left");
+        newSection.classList.remove("left-to-right");
+        oldSection.classList.add("right-to-left");
+        oldSection.classList.remove("left-to-right");
+    } else {
+        newSection.classList.add("left-to-right");
+        newSection.classList.remove("right-to-left");
+        oldSection.classList.add("left-to-right");
+        oldSection.classList.remove("right-to-left");
+    }
 });
 
 

@@ -29,6 +29,11 @@
     color: gold;
 }
 
+.tab-sections-container {
+    position: relative;
+    overflow: hidden;
+}
+
 .tab-section {
     display: none;
 }
@@ -37,27 +42,55 @@
     display: block;
 }
 
+.tab-section.previous {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 .tab-section.current.right-to-left {
-    animation: rightToLeft 300ms;
+    animation: rightToLeftEnter 300ms;
 }
 
 .tab-section.current.left-to-right {
-    animation: leftToRight 300ms;
+    animation: leftToRightEnter 300ms;
 }
 
-@keyframes rightToLeft {
+.tab-section.previous.right-to-left {
+    animation: rightToLeftExit 300ms forwards;
+}
+
+.tab-section.previous.left-to-right {
+    animation: leftToRightExit 300ms forwards;
+}
+
+@keyframes rightToLeftEnter {
     from {
         transform: translateX(100%);
     }
 }
 
-@keyframes leftToRight {
+@keyframes leftToRightEnter {
     from {
         transform: translateX(-100%);
     }
 }
 
+@keyframes rightToLeftExit {
+    to {
+        transform: translateX(-100%);
+        display: none;
+    }
+}
 
+@keyframes leftToRightExit {
+    to {
+        transform: translateX(100%);
+        display: none;
+    }
+}
 
 
 
