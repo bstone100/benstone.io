@@ -35,6 +35,10 @@
                 var(--shadow-inset);
 }
 
+.neu--pressed {
+    --press: 1;
+}
+
 /* this property will track the pressed state of the button with 0 being not pressed and 1 being pressed */
 @property --press {
     syntax: "<number>";

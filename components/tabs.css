@@ -36,6 +36,10 @@
 
 .tab-section {
     display: none;
+    border-radius: 30px;
+    padding: var(--layout-gap-small);
+    height: 400px;
+    overflow: auto;
 }
 
 .tab-section.current {
@@ -68,26 +72,26 @@
 
 @keyframes rightToLeftEnter {
     from {
-        transform: translateX(100%);
+        transform: translateX(calc(100% + var(--layout-gap-small)));
     }
 }
 
 @keyframes leftToRightEnter {
     from {
-        transform: translateX(-100%);
+        transform: translateX(calc(-100% - var(--layout-gap-small)));
     }
 }
 
 @keyframes rightToLeftExit {
     to {
-        transform: translateX(-100%);
+        transform: translateX(calc(-100% - var(--layout-gap-small)));
         display: none;
     }
 }
 
 @keyframes leftToRightExit {
     to {
-        transform: translateX(100%);
+        transform: translateX(calc(100% + var(--layout-gap-small)));
         display: none;
     }
 }
