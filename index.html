@@ -189,6 +189,26 @@
                             <p><time>July 2024 - June 2026</time></p>
                             <p>Vitesse Automation</p>
                             <p>Los Gatos, CA</p>
+
+                            <!-- paragraphs explaining the highlights of what I did here -->
+
+                            <!-- image or video of generator prototype -->
+
+                            <!-- image or video of vitesse prototype circa late 2024 with openai realtime api ai and demo -->
+
+                            <!-- something about the patent, perhaps the document itself, if allowed -->
+
+                            <!-- something about the vitesse system architecture and API design, perhaps architecture diagrams -->
+
+                            <!-- image or video of early deployment at enervenue -->
+
+                            <!-- images or video from the deployments in france -->
+
+                            <!-- images and content about the final version as of ship day -->
+
+                            <!-- something about the chatbot and the most advanced final version of it -->
+
+                            <!-- boring resume bullet points -->
                             <ul>
                                 <li>Led team of four engineers to develop Vitesse automation software and deliver it to customers</li>
                                 <li>Invented novel usage of LLMs for factory automation and wrote patent application</li>
@@ -208,9 +228,90 @@
                                 In my first summer there, I joined a project called Creator, which was a 3D digital twin
                                 desktop application, meant for simulating robots and other factory equipment in 3D. The app's
                                 3D features were developed with Qt 3D in C++, and the UI was Qt Widgets in C++. That summer
-                                I developed a tree view panel for the app, and I worked generally on the app's UI.
+                                I developed a tree view panel for the app, and I worked generally on the app's UI. For example,
+                                I reorganized the app's widgets into a <a href="https://doc.qt.io/qt-6/qmainwindow.html" target="_blank">QMainWindow</a>
+                                surrounded by <a href="https://doc.qt.io/qt-6/qdockwidget.html" target="_blank">QDockWidgets</a>.
+                            </p>
+                            <!-- image here of creator ui circa summer 2022 with tree view highlighted -->
+
+                            <!-- image here of CES -->
+
+                            <p>
+                                In January 2023 I joined the team in Las Vegas to attend the CES trade show. The company
+                                had secured a booth at the convention center, where they brought a demo of the software
+                                they had been working on. This included bringing a <a href="https://www.staubli.com/us/en/home.html" target="_blank">Stäubli</a>
+                                robot arm, and setting up Creator to shadow and, IIRC, control the robot. It was a really
+                                cool experience to show off the software I had worked on in public to anyone who walked by!
                             </p>
 
+                            <!-- image here of creator before and after I implemented the UI redesign -->
+
+                            <p>
+                                Between January and May 2023, while still at school, I implemented a redesign of Creator's UI.
+                                The design was created by the company's UI/UX designer using Figma and then was handed off
+                                to me for me to implement it however I wanted. I did a lot of research and found out there
+                                were a few quite different ways to customize the style of a Qt app. I could have rewritten
+                                the UI with Qt Quick in QML, I could have imperatively styled the UI with QStyle in C++, or
+                                I could have used Qt Style Sheets (QSS, similar to CSS). I eliminated QML because the UI code
+                                was already written with Qt Widgets, and I eliminated QStyle because it felt wrong to write
+                                all the styles imperatively, so I landed on QSS, which was a very interesting development
+                                experience. The biggest difference between it and regular CSS is that QSS doesn't have Flexbox
+                                or Grid, so I implemented the layout mostly with QVBoxLayout and QHBoxLayout, though I should have
+                                probably also used QGridLayout and QFormLayout. The hardest challenge in implementing this UI
+                                was making a tab bar and putting it into the title bar of the window. There is no easy
+                                way to do this with Qt; you have to basically rewrite the window yourself using the Win32 API,
+                                if you're on Windows. Fortunately I found this really awesome library
+                                <a href="https://github.com/antonypro/QGoodWindow" target="_blank">QGoodWindow</a>
+                                that solves this exact problem, so this made my job much, much easier. I finished implementing
+                                the UI redesign ahead of schedule, a few weeks before the company's next trade show visit.
+                            </p>
+
+                            <!-- image of Automate here -->
+
+                            <p>
+                                In May 2023 the company took a week-long trip out to Detroit to attend the Automate trade show.
+                                This was another fun experience for me because I got to see a lot of cool tech that other companies
+                                were developing, and because again I got to show off my work to the public. Something that
+                                really impressed and surprised me was finding the <a href="https://robodk.com" target="_blank">RoboDK</a>
+                                booth because their software is quite similar to what we were trying to build with Creator.
+                            </p>
+
+                            <!-- video of IMU simulated in 3D -->
+
+                            <p>
+                                At the start of my internship in Summer 2023, we were given a challenge to see if we could
+                                shadow an IMU in 3D. This was a neat challenge that taught me a lot about both 3D graphics, i.e.,
+                                matrix math and quaternions, as well as hardware sensors, namely how to interpret
+                                gyroscope and accelerometer readings.
+                            </p>
+
+                            <!-- video of first AI robot control voice demo -->
+
+                            <p>
+                                Then later in the summer, the company decided to start researching if the new developments
+                                in AI could be useful for what the company was trying to build. The first challenge we
+                                were given was to see if we could make GPT-4 control a Fanuc robot arm. It turns out the
+                                trick for making an LLM take action is really simple. You just describe in your system
+                                prompt an API that you want the LLM to have access to, and then when the LLM
+                                wants to invoke a tool, it generates a function call in JSON, which your app then processes.
+                                So anyway, we got GPT-4 to control our robot pretty quickly, and this made the company
+                                want to invest more in AI. I spent the rest of my time as an intern progressing this
+                                AI demo and basically doing R&D around how Vitesse could use AI.
+                            </p>
+
+                            <p>
+                                I should explain here clearly what exactly Vitesse is. Here is the basic premise:
+                                in manufacturing, PLCs are used to control factory equipment like conveyors. The companies
+                                that make PLCs, like Siemens and Rockwell, require you to use proprietary network communication
+                                protocols to control their PLCs remotely. Vitesse is interoperability software that lets
+                                you program any brand of PLC from one user interface.
+                            </p>
+
+                            <p>
+                                So that premise is the core of what Vitesse, the software, is, and all the projects
+                                and R&D work conducted at Vitesse, the company, were meant to drive forward the creation
+                                of a commercially viable version of the core software.
+                            </p>
 
                             <!-- boring resume bullet points -->
                             <ul>
@@ -229,10 +330,6 @@
                             <p>University of California, Davis</p>
                             <p><time>September 2021 - June 2024</time></p>
                             <p>Bachelor of Science in Computer Science</p>
-                            <p>
-                                I graduated in 3 years with a 3.6 GPA. One day I'll write more here about my thoughts on the
-                                CS program at Davis.
-                            </p>
                         </li>
                     </ol>
                 </section>
@@ -269,13 +366,22 @@
                             <a href="https://github.com/bstone100/DREAM" target="_blank">The code on GitHub</a>
                             <p><time>June 2024 - July 2024</time></p>
                             <p>iOS dream journal app written with Qt Widgets (C++)</p>
+
+                            <!-- screenshot of the app here -->
+
+                            <!-- screenshot of the rejection from the App Store review here -->
+
                             <p>
                                 This was a fun project that I didn't quite finish.
                                 It's basically a voice memo app with automatic transcription and labeling.
                                 The premise of the app is that after awakening from a dream, you would just
                                 speak what you remember of your dream into the app, instead of using a dream journal.
                                 I wrote the app using Qt Widgets, so C++, and I used some Objective-C to access Apple's
-                                real-time voice transcription API.
+                                real-time voice transcription API. I got to the point where I thought the app worked and
+                                submitted it to the App Store for review, but it was rejected because apparently the
+                                transcription wasn't working on the reviewer's device. After testing the app on more devices
+                                in the iOS simulator on my Mac, I realized that Apple's API for transcription was inconsistent
+                                and only works properly on some devices. I didn't continue the project after this point.
                             </p>
                         </li>
                         <li>
@@ -283,6 +389,13 @@
                             <a href="https://github.com/bstone100/ADHD" target="_blank">The code on GitHub</a>
                             <p><time>February 2024 - May 2024</time></p>
                             <p>iOS calendar app with AI assistant written with Qt Widgets (C++)</p>
+
+                            <!-- screenshot of the app here -->
+
+                            <!-- video of the zoom in and out animation here -->
+
+                            <!-- screenshot of metrics from App Store Connect here -->
+
                             <p>
                                This app started as a school project and eventually got put on the iOS App Store.
                                It was initially a group project for a Human Computer Interaction class I took at
@@ -308,6 +421,9 @@
                             <a href="https://github.com/bstone100/BenMaxGame" target="_blank">The code on GitHub</a>
                             <p><time>September 2022 - December 2022</time></p>
                             <p>Rewrite of original BenMaxGame in C++</p>
+
+                            <!-- screenshot or video of the game here -->
+
                             <p>
                                 This was a rewrite that I did in C++ of the <a href="#benmaxgame-java">original BenMaxGame</a>, which was in Java. I used the <a href="https://doc.qt.io/qt-6/graphicsview.html" target="_blank">Qt Graphics View Framework</a> this time, whereas the Java version used
                                 Swing. This version is much smoother and faster than the original, but the game mechanics
@@ -320,6 +436,9 @@
                             <a href="https://github.com/bstone100/iOS-Sleep-Tracker/tree/main/Final%20Project/Final_Project" target="_blank">The code on GitHub</a>
                             <p><time>May 2022 - June 2022</time></p>
                             <p>iOS app for tracking your sleep patterns written with SwiftUI</p>
+
+                            <!-- screenshot or video of the app here -->
+
                             <p>
                                 This was a school project for <a href="https://meetybyan.com/" target="_blank">Yibo Yan's</a> iOS development course where we learned Swift and SwiftUI. I liked learning
                                 SwiftUI because writing it feels like writing the ultimate "native" app. I've now used
@@ -332,6 +451,9 @@
                             <a href="#" target="_blank">The code (not yet) on GitHub</a>
                             <p><time>May 2020 - June 2020</time></p>
                             <p>2D arcade-style game written with Java Swing</p>
+
+                            <!-- screenshot or video of the app here -->
+
                             <p>
                                 <a href="https://www.linkedin.com/in/maximilien-leroy-658051244/" target="_blank">Max</a>
                                 and I made this game in Java as our final project for AP Computer Science, way back in
