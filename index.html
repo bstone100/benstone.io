@@ -194,6 +194,70 @@
 
                             <!-- image or video of generator prototype -->
 
+                            <p>
+                                I joined Vitesse full-time in July 2024 and continued the work I had been doing as an intern,
+                                which was R&D surrounding how Vitesse could benefit from AI. At the time the AI-controls-robot-arm
+                                demo was becoming more and more advanced, as we had been developing new techniques to make
+                                it more accurate and natural. We decided that I should turn my research towards generalizing
+                                the demo such that you could have our AI generate factory automation programs of any
+                                complexity, for any set of automation equipment, connected to any set of PLCs.
+                            </p>
+
+                            <p>
+                                We realized we would need to pick a programming language for our AI to write automation
+                                programs in. The PLC programming world is highly fragmented, with each PLC-maker providing
+                                customers with a proprietary IDE, compiler, and tooling. So, I investigated higher level
+                                state machine programming languages and identified SCXML as a prime choice for our use case.
+                                I worked with pretty cool open source libraries during this time like
+                                <a href="https://github.com/sverweij/state-machine-cat" target="_blank">State Machine Cat</a>
+                                for visualization, <a href="https://doc.qt.io/qt-6/qtscxml-overview.html" target="_blank">
+                                Qt SCXML</a> as an interpreter, and my favorite library
+                                <a href="https://www.npmjs.com/package/@scion-scxml/scxml?activeTab=readme" target="_blank">SCION</a>
+                                as an interpreter in JavaScript.
+                            </p>
+
+                            <p>
+                                In October 2024, OpenAI released the <a href="https://developers.openai.com/api/docs/guides/realtime"
+                                target="_blank">Realtime API</a> beta. We ran their <a href="https://github.com/openai/openai-realtime-console/tree/websockets"
+                                target="_blank">demo app</a> and were blown away by how low they had gotten the latency to be
+                                for speech to speech interaction with GPT-4o. At this point I rewrote our robot demo to use
+                                the Realtime API instead of the Chat Completions API, and then I started developing a new
+                                frontend for our demo in React.
+                            </p>
+
+                            <p>
+                                By the end of 2024, we felt the robot demo had reached its peak usefulness, so we pivoted
+                                to designing the system architecture for the ultimate version of Vitesse that would incorporate
+                                our learnings from all of our previous R&D projects and software iterations. We also decided
+                                to write a patent application to explain why our combination of AI, SCXML, PLC interoperability,
+                                and a new user interface were together a new invention. That was a valuable experience because
+                                it made me do technical writing about my own work.
+                            </p>
+
+                            <p>
+                                By early 2025 I had moved into planning mode, so I was designing Vitesse's system architecture and APIs.
+                                One problem with the previous iterations of Vitesse was that they were all C# monoliths,
+                                and this was causing issues for our team's development speed. What I wanted to do was
+                                design Vitesse as a microservices architecture, or plugin architecture, where a master program would spawn a worker
+                                program for each PLC. There is too much to explain about the full architecture that I'm
+                                not going to do it all here. But anyway, I worked on the architecture and APIs for a few months
+                                before I started dividing the work up among team members and coding.
+                            </p>
+
+                            <aside>
+                                <p>
+                                    I want to give a quick explanation of the trick that makes
+                                    this sort of demo possible. The trick is to make the LLM operate within a very simple user frame,
+                                    and to have all the difficult math be calculated by a pre-written program. In other words,
+                                    don't make your AI pick joint angles for your robot, this will never be accurate. Instead,
+                                    make your AI issue commands like "pick up the object at (1, 3) from pallet X," and then your
+                                    program needs to calculate the set of joint angles that will place the robot arm's end effector
+                                    at (1, 3) in the pallet X user frame. This type of calculation is called inverse kinematics
+                                    because you start with the destination and then calculate the path, whereas forward
+                                    kinematics is when you start with the path and then calculate the destination.
+                                </p>
+                            </aside>
+
                             <!-- image or video of vitesse prototype circa late 2024 with openai realtime api ai and demo -->
 
                             <!-- something about the patent, perhaps the document itself, if allowed -->
